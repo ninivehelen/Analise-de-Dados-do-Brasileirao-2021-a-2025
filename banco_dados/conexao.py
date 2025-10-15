@@ -44,7 +44,45 @@ def criar_tabela_club(cursor):
     except mysql.connector.Error as e:
         print(f"Error creating table: {e}")
 
+def criar_tabela_competicao(cursor):
+    try:
+        criar_tabela_clube = """
+        CREATE TABLE IF NOT EXISTS Competicao (
+            id_competicao INT  PRIMARY KEY,
+            id_clube INT,
+            nome_competicao VARCHAR(200),
+            ano INT,
+            FOREIGN KEY (id_clube) REFERENCES clubes(id_clube)
+        );
+        """
+        cursor.execute(criar_tabela_clube)
+        print("Tabela competição criada com sucesso!.")
+    except mysql.connector.Error as e:
+        print(f"Error creating table: {e}")
+
+def criar_tabela_jogadores(cursor):
+    try:
+        criar_tabela_clube = """
+        CREATE TABLE IF NOT EXISTS Jogadores(
+            id_clube INT,
+            nome_jogador VARCHAR(200),
+            posicao VARCHAR(200),
+            idade INT,
+            nacionalidade VARCHAR(200),
+            altura VARCHAR(200),
+            pe VARCHAR(200),
+            valor INT,
+            FOREIGN KEY (id_clube) REFERENCES clubes(id_clube)
+        );
+        """
+        cursor.execute(criar_tabela_clube)
+        print("Tabela jogadores criada com sucesso!.")
+    except mysql.connector.Error as e:
+        print(f"Error creating table: {e}")
+
 if __name__ == "__main__":
     cursor = criar_conexao()
     criar_banco_dados(cursor)
     criar_tabela_club(cursor)
+    criar_tabela_competicao(cursor)
+    criar_tabela_jogadores(cursor)
