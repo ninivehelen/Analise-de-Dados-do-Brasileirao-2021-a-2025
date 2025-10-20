@@ -5,8 +5,8 @@ def criar_conexao():
    try:
     conexao = mysql.connector.connect(
         host="localhost",  
-        user="",
-        password=""
+        user="root",
+        password="3623"
     )
     print("Conexão realizada com sucesso!")
     cursor = conexao.cursor()
@@ -14,7 +14,6 @@ def criar_conexao():
 
    except mysql.connector.Error as err:
     print(f"Erro Mysql: {err}")
-
 
 if __name__ == "__main__":
     cursor = criar_conexao()

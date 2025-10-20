@@ -15,7 +15,7 @@ def criar_tabela_club(cursor):
         criar_tabela_clube = """
         CREATE TABLE IF NOT EXISTS Clubes (
             id_clube INT  PRIMARY KEY,
-            nome_clube_official VARCHAR(100),
+            nome_official VARCHAR(100),
             pais VARCHAR(100),
             imagem VARCHAR(100),
             estadio VARCHAR(200),

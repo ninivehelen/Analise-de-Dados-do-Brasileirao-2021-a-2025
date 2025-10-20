@@ -105,7 +105,6 @@ def salvar_dados(arquivo, nome_arquivo):
     print(f"Dados sobre '{nome_arquivo}' salvos: {nome_arquivo}.csv")
     print(df.head()) 
 
-
 if __name__ == "__main__":
     clubes_codigo = extrair_codigos_info_competicao()
     extrair_info_club(clubes_codigo)
