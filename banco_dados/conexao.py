@@ -1,5 +1,5 @@
 import mysql.connector
-
+from criar_tabelas import * 
 
 def criar_conexao(): 
    try:
@@ -10,75 +10,11 @@ def criar_conexao():
     )
     print("Conexão realizada com sucesso!")
     cursor = conexao.cursor()
-    cursor.execute("USE Campeonato_Brasileiro")
     return cursor
 
    except mysql.connector.Error as err:
     print(f"Erro Mysql: {err}")
 
-def criar_banco_dados(cursor):
- try:
-    nome_do_banco = "Campeonato_Brasileiro"
-    cursor.execute(f"CREATE DATABASE IF NOT EXISTS {nome_do_banco}")
-    print(f"Banco de dados '{nome_do_banco}' criado com sucesso!")
-
- except mysql.connector.Error as err:
-    print(f"Erro ao criar banco de dados: {err}")
-     
-def criar_tabela_club(cursor):
-    try:
-        criar_tabela_clube = """
-        CREATE TABLE IF NOT EXISTS Clubes (
-            id_clube INT  PRIMARY KEY,
-            nome VARCHAR(200),
-            pais VARCHAR(200),
-            imagem VARCHAR(200),
-            estadio VARCHAR(200),
-            valor_mercado INT,
-            numero_jogadores INT,
-            numero_jogadores_estrangeiros INT
-        );
-        """
-        cursor.execute(criar_tabela_clube)
-        print("Tabela clubes criada com sucesso!.")
-    except mysql.connector.Error as e:
-        print(f"Error creating table: {e}")
-
-def criar_tabela_competicao(cursor):
-    try:
-        criar_tabela_clube = """
-        CREATE TABLE IF NOT EXISTS Competicao (
-            id_competicao INT  PRIMARY KEY,
-            id_clube INT,
-            nome_competicao VARCHAR(200),
-            ano INT,
-            FOREIGN KEY (id_clube) REFERENCES clubes(id_clube)
-        );
-        """
-        cursor.execute(criar_tabela_clube)
-        print("Tabela competição criada com sucesso!.")
-    except mysql.connector.Error as e:
-        print(f"Error creating table: {e}")
-
-def criar_tabela_jogadores(cursor):
-    try:
-        criar_tabela_clube = """
-        CREATE TABLE IF NOT EXISTS Jogadores(
-            id_clube INT,
-            nome_jogador VARCHAR(200),
-            posicao VARCHAR(200),
-            idade INT,
-            nacionalidade VARCHAR(200),
-            altura VARCHAR(200),
-            pe VARCHAR(200),
-            valor INT,
-            FOREIGN KEY (id_clube) REFERENCES clubes(id_clube)
-        );
-        """
-        cursor.execute(criar_tabela_clube)
-        print("Tabela jogadores criada com sucesso!.")
-    except mysql.connector.Error as e:
-        print(f"Error creating table: {e}")
 
 if __name__ == "__main__":
     cursor = criar_conexao()
