@@ -33,7 +33,7 @@ def criar_tabela_competicao(cursor):
     try:
         criar_tabela_competicao = """
         CREATE TABLE IF NOT EXISTS Competicao (
-            id_competicao INT  PRIMARY KEY,
+            id_competicao Varchar(50),
             nome_competicao VARCHAR(200),
             id_clube INT,
             ano INT,
