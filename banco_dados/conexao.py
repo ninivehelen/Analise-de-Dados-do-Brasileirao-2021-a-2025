@@ -18,6 +18,6 @@ def criar_conexao():
 if __name__ == "__main__":
     cursor = criar_conexao()
     criar_banco_dados(cursor)
-    #criar_tabela_club(cursor)
+    criar_tabela_club(cursor)
     criar_tabela_competicao(cursor)
-    #criar_tabela_jogadores(cursor)
+    criar_tabela_jogadores(cursor)

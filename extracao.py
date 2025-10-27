@@ -22,8 +22,8 @@ def extrair_codigos_info_competicao():
 
             for clube in dados["clubs"]:
                 registro = {
-                    'competicao': competicao,
-                    'club_id': clube.get("id", "N/A"),
+                    'id_competicao': competicao,
+                    'id_clube': clube.get("id", "N/A"),
                     'ano': ano
                 }
                 informacao_competicao.append(registro)
@@ -53,7 +53,7 @@ def extrair_info_club(codigos_clube):
             dados = response.json()
             registro = {
                 'id_clube': club_id,
-                'nome official': dados.get("officialName", "N/A"),
+                'nome_official': dados.get("officialName", "N/A"),
                 'pais': dados.get("addressLine3", "N/A"),
                 'imagem': dados.get("image", "N/A"),
                 'estadio': dados.get("stadium", "N/A"),
@@ -84,7 +84,7 @@ def extrair_info_jogadores(clubes_codigos):
             for jogador in dados["players"]:
                 registro = {
                     'id_clube': dados.get("id", "N/A"),
-                    'nome': jogador.get("name", "N/A"),
+                    'nome_jogador': jogador.get("name", "N/A"),
                     'posicao': jogador.get("position", "N/A"),
                     'idade': jogador.get("age", "N/A"),
                     'nacionalidade': jogador.get("nationality", "N/A"),
